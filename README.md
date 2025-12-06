@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LearnGenie - Learning Management System
 
 A comprehensive Learning Management System (LMS) built with React, Node.js, and MongoDB. LearnGenie provides a platform for learners to discover, purchase, and track their progress in various courses, with integrated payment processing through Razorpay.
@@ -256,3 +257,6 @@ For issues and questions, please open an issue in the GitHub repository.
 ---
 
 **Built with ❤️ by Developer Aswanth**
+=======
+# Learn_Genie
+>>>>>>> bf6a1503704a20e499023e96a43c4323374dc1e1
