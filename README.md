@@ -190,7 +190,7 @@ pip install -r requirements.txt
 
 ```env
 # MongoDB Configuration
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/learngenie?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority
 
 # Server Configuration
 PORT=5000
