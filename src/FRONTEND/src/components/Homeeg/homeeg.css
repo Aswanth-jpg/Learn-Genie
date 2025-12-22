@@ -1,0 +1,384 @@
+/* Modern Home Page Redesign Styles */
+
+.modern-home-wrapper {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #e6d2ee 0%, #c7d2fe 100%);
+  min-height: 100vh;
+  color: #232946;
+}
+
+.modern-hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 96px 8vw 80px 8vw;
+  background: #d1d5db;
+  gap: 48px;
+  position: relative;
+  min-height: 100vh;
+}
+.modern-hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.modern-hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+  margin-bottom: 0.5rem;
+}
+.modern-hero-subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #232946;
+  margin-bottom: 0.5rem;
+}
+.modern-hero-desc {
+  font-size: 1.2rem;
+  color: #444e5e;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+.modern-hero-cta {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.10);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modern-hero-cta:hover {
+  background: #2563eb;
+}
+.modern-hero-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modern-hero-image img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 4px 32px rgba(102,191,191,0.10);
+}
+
+.scroll-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 24px 0;
+}
+.scroll-btn {
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(102,191,191,0.10);
+  width: 20px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  outline: none;
+}
+.scroll-btn img {
+  width: 20px;
+  height: 20px;
+  animation: scrollAnimation 1.5s infinite alternate;
+}
+@keyframes scrollAnimation {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(12px); }
+}
+.scroll-btn:hover {
+  box-shadow: 0 4px 16px rgba(102,191,191,0.18);
+}
+
+.modern-piechart-section-title,
+.modern-features-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+  margin-bottom: 32px;
+}
+.modern-piechart-courses-row {
+  display: flex;
+  gap: 64px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.modern-piechart-card {
+  background: #d1d5db;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.10);
+  border: 1.5px solid #c7d2fe;
+  padding: 32px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 260px;
+  min-height: 260px;
+  margin-right: 24px;
+}
+.modern-piechart-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+}
+
+.modern-courses-cards-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  margin-left: 24px;
+}
+.modern-course-card {
+  flex: 1 1 0;
+  min-width: 180px;
+  max-width: 260px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #e0e7ef;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.10);
+  border: 1.5px solid #c7d2fe;
+  padding: 18px 16px;
+  transition: box-shadow 0.2s;
+}
+.modern-course-card:hover {
+  box-shadow: 0 4px 16px rgba(102,191,191,0.18);
+}
+.modern-course-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.modern-course-card-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+}
+.modern-course-card-count {
+  font-size: 0.98rem;
+  color: #444e5e;
+}
+
+.modern-course-card.coursera-card,
+.modern-course-card.udemy-card,
+.modern-course-card.udacity-card {
+  grid-area: unset;
+}
+
+.modern-features-section {
+  background: #d1d5db;
+  padding: 56px 8vw 32px 8vw;
+  border-radius: 32px;
+  margin: 0 auto 48px auto;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.10);
+  border: 1.5px solid #c7d2fe;
+  max-width: 1200px;
+}
+.modern-features-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+  margin-bottom: 32px;
+}
+.modern-features-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  flex-wrap: nowrap;
+}
+.modern-feature-card {
+  flex: 1 1 0;
+  min-width: 180px;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(102,191,191,0.07);
+  padding: 28px 20px;
+  text-align: center;
+}
+.modern-feature-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+.modern-feature-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+}
+.modern-feature-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.modern-platforms-section {
+  padding: 56px 8vw 32px 8vw;
+  margin: 0 auto 48px auto;
+  max-width: 1200px;
+}
+.modern-platforms-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #66bfbf;
+  margin-bottom: 32px;
+}
+.modern-platforms-list {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.modern-platform-card {
+  background: #e0e7ef;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.10);
+  border: 1.5px solid #c7d2fe;
+  padding: 18px 16px;
+  min-width: 220px;
+  max-width: 260px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.modern-platform-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+.modern-platform-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+}
+.modern-platform-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.modern-footer {
+  background: #d1d5db;
+  color: #444e5e;
+  text-align: center;
+  padding: 24px 0 12px 0;
+  border-radius: 0 0 24px 24px;
+  margin-top: 48px;
+}
+
+.hero-scroll-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 64px;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .modern-hero-section {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 32px;
+    padding: 48px 4vw 24px 4vw;
+  }
+  .modern-hero-content {
+    align-items: center;
+  }
+  .modern-hero-image img {
+    max-width: 320px;
+  }
+  .modern-piechart-courses-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 900px) {
+  .modern-piechart-courses-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .modern-courses-cards-row {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .modern-piechart-section-title {
+    font-size: 1.5rem;
+  }
+  .modern-piechart-card {
+    min-width: 180px;
+    min-height: 180px;
+    padding: 18px 8px;
+  }
+  .modern-course-card {
+    min-width: 120px;
+    padding: 10px 6px;
+  }
+}
+@media (max-width: 700px) {
+  .modern-hero-title {
+    font-size: 2rem;
+  }
+  .modern-hero-subtitle {
+    font-size: 1.2rem;
+  }
+  .modern-hero-desc {
+    font-size: 1rem;
+  }
+  .modern-hero-image img {
+    max-width: 180px;
+  }
+  .modern-features-list, .modern-platforms-list {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .modern-features-section, .modern-platforms-section {
+    padding: 24px 2vw 16px 2vw;
+  }
+}

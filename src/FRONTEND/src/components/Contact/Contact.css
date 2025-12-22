@@ -1,0 +1,268 @@
+/* Comprehensive CSS Reset - Add this at the very top */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root,
+#__next {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure navbar is at absolute top */
+nav,
+.navbar,
+[class*="navbar"],
+[class*="nav-"] {
+  margin-top: 0 !important;
+  top: 0 !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+html,
+#root {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.contact-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e6d2ee 0%, #c7d2fe 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+  padding-top: 0; /* Remove padding-top */
+  margin-top: 0; /* Ensure no top margin */
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  margin-top: 80px; /* Move the top spacing here instead */
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(60, 60, 120, 0.1);
+  overflow: hidden;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 220px;
+  animation: fadeIn 0.7s ease;
+}
+
+.contact-img {
+  flex: 1 1 220px;
+  background: linear-gradient(135deg, #c7d2fe 0%, #e6d2ee 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.contact-img img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.contact-form-section {
+  flex: 2 1 350px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form-section h2 {
+  color: #667eea;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.app-form {
+  width: 100%;
+}
+
+.app-form-group {
+  margin-bottom: 1.1rem;
+}
+
+.app-form-control {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #d1d5db;
+  font-size: 1rem;
+  background: #f8fafc;
+  color: #232946;
+  transition: border-color 0.2s;
+}
+
+.app-form-control:focus {
+  border-color: #667eea;
+  outline: none;
+}
+
+.app-form-control::placeholder {
+  color: #a0aec0;
+}
+
+.app-form-group.message textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.app-form-group.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.app-form-button {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.08);
+}
+
+.app-form-button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
+}
+
+.app-form-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Success Message Styles */
+.success-message {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+  border: 2px solid #10b981;
+  border-radius: 12px;
+  text-align: center;
+  animation: successFadeIn 0.5s ease-in-out;
+}
+
+.success-text {
+  color: #059669;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tick-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tick-gif {
+  height: 32px;
+  width: 32px;
+  vertical-align: middle;
+}
+
+.success-subtext {
+  color: #047857;
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes successFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .background {
+    margin-top: 100px; /* More spacing on mobile */
+  }
+
+  .contact-card {
+    flex-direction: column;
+    min-height: unset;
+    max-width: 95vw;
+  }
+
+  .contact-img {
+    padding: 2rem 1rem 1rem 1rem;
+    justify-content: center;
+  }
+
+  .contact-form-section {
+    padding: 1.5rem 1rem 2rem 1rem;
+  }
+
+  .success-text {
+    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact_tail {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #888;
+  padding-bottom: 1rem;
+}

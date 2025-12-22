@@ -1,0 +1,44 @@
+@import '../Homeeg/navbareg.css';
+
+.about-container {
+  /* padding: 0 2rem 2rem 2rem; */
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e6d2ee 0%, #c7d2fe 100%);
+  min-height: 100vh;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: auto;
+  background-color: #d1d5db;
+  margin-top:7rem;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.10);
+  border: 1.5px solid #c7d2fe;
+}
+
+.about-content h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+  font-size: 2rem;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #232946;
+  margin-bottom: 1rem;
+}
+
+.about-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #888;
+}
