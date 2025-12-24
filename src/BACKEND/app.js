@@ -32,14 +32,25 @@ const validateEmail = (email) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
 
 // Middleware
 app.use(cors({
-    origin: [
-        'http://localhost:3000', 
-        'http://localhost:5173', 
-        'http://localhost:4173',
-        'https://learn-genie-backend.onrender.com',
-        'https://*.vercel.app',  // Allow all Vercel preview deployments
-        'https://learn-genie.vercel.app'  // Replace with your actual Vercel URL after deployment
-    ],
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            'http://localhost:3000',
+            'http://localhost:5173',
+            'http://localhost:4173',
+            'https://learn-genie-backend.onrender.com',
+            'https://learn-genie-lime.vercel.app'
+        ];
+        
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        // Check if origin is in allowed list or ends with .vercel.app
+        if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.vercel.app')) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
 app.use(express.json());
