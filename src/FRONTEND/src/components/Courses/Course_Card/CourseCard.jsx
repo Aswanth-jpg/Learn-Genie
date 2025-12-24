@@ -3,6 +3,8 @@ import './MarvellousMacawArticle.css';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const CourseCard = ({ data, userId }) => {
   const [desc, setDesc] = useState(data.description.slice(0, 80));
   const [readMore, setReadMore] = useState('Read More...');
@@ -15,7 +17,7 @@ const CourseCard = ({ data, userId }) => {
 
   useEffect(() => {
     // Fetch ratings from backend
-    fetch(`/api/courses/${data.ID}/ratings${effectiveUserId ? `?userId=${effectiveUserId}` : ''}`)
+    fetch(`${API_URL}/api/courses/${data.ID}/ratings${effectiveUserId ? `?userId=${effectiveUserId}` : ''}`)
       .then(res => res.json())
       .then(r => {
         setAvgRating(r.average || 0);
@@ -29,7 +31,7 @@ const CourseCard = ({ data, userId }) => {
       alert('You must be logged in to rate.');
       return;
     }
-    fetch(`/api/courses/${data.ID}/rate`, {
+    fetch(`${API_URL}/api/courses/${data.ID}/rate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: effectiveUserId, rating: newRating })
@@ -38,7 +40,7 @@ const CourseCard = ({ data, userId }) => {
       .then(() => {
         setUserRating(newRating);
         // Optionally, refetch average
-        fetch(`/api/courses/${data.ID}/ratings`)
+        fetch(`${API_URL}/api/courses/${data.ID}/ratings`)
           .then(res => res.json())
           .then(r => {
             setAvgRating(r.average || 0);

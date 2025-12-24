@@ -32,7 +32,14 @@ const validateEmail = (email) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:4173'],
+    origin: [
+        'http://localhost:3000', 
+        'http://localhost:5173', 
+        'http://localhost:4173',
+        'https://learn-genie-backend.onrender.com',
+        'https://*.vercel.app',  // Allow all Vercel preview deployments
+        'https://learn-genie.vercel.app'  // Replace with your actual Vercel URL after deployment
+    ],
     credentials: true
 }));
 app.use(express.json());

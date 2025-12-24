@@ -6,6 +6,8 @@
   import axios from "axios";
   import { useToast } from '../Toast/ToastContext';
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   const Contact = () => {
     const { error: showError } = useToast();
 
@@ -32,7 +34,7 @@
 
     const handleSend = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/api/messages', {
+        const response = await axios.post(`${API_URL}/api/messages`, {
           name: userName,
           email: userMail,
           number: userNo,

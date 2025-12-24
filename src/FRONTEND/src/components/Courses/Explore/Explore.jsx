@@ -6,6 +6,8 @@ import Downnav from './Downnav';
 import SkeletonCard from '../Course_Card/SkeletonCard';
 import NavbarEg from '../../Homeeg/NavbarEg';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function Explore(props) {
 
   const [isSearching, setIsSearching] = useState(false);
@@ -26,7 +28,7 @@ export default function Explore(props) {
   };
 
   const FetchCourseraData = () => {
-    const API = `http://localhost:5000/api/coursera/courses`;
+    const API = `${API_URL}/api/coursera/courses`;
     return axios.get(API).then((response) => {
       const data = response.data.courses;
       return data.slice(0, 10); // Limit to 10 courses for display

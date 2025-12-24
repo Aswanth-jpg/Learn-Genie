@@ -6,6 +6,8 @@ import "./SignUp.css"
 import { useNavigate } from "react-router-dom"
 import { useToast } from '../Toast/ToastContext'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function SignUp() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -50,7 +52,7 @@ export default function SignUp() {
 
     // First check if user already exists
     axios
-      .get(`http://localhost:5000/api/check-user/${email}`)
+      .get(`${API_URL}/api/check-user/${email}`)
       .then((checkResponse) => {
         // If we get here, user exists
         setIsLoading(false)
@@ -63,7 +65,7 @@ export default function SignUp() {
         if (checkError.response && checkError.response.status === 404) {
           // User doesn't exist, proceed with registration
           axios
-            .post("http://localhost:5000/api/insert", {
+            .post(`${API_URL}/api/insert`, {
               full_name: learnerName,
               email,
               password,

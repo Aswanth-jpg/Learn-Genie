@@ -4,6 +4,8 @@ import './SignIn.css';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../Toast/ToastContext';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function SignIn() {
   const [selectedRole, setSelectedRole] = useState(null);
   const [email, setEmail] = useState('');
@@ -27,7 +29,7 @@ export default function SignIn() {
   // Convert role to lowercase to match backend storage
   const backendRole = selectedRole.toLowerCase();
 
-  axios.post('http://localhost:5000/api/login', {
+  axios.post(`${API_URL}/api/login`, {
     email,
     password,
     role: backendRole

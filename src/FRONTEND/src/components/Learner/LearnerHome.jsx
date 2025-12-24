@@ -27,6 +27,9 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import ReactStars from 'react-rating-stars-component';
 
+// API URL from environment variable
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 // --- Helper function to extract YouTube video ID ---
 function extractYouTubeId(url) {
   if (!url) return null;
@@ -219,7 +222,7 @@ export default function App() {
 
   const getCourses = () => {
     setCoursesLoading(true);
-    axios.post('http://localhost:5000/api/get_courses')
+    axios.post(`${API_URL}/api/get_courses`)
       .then((response) => {
         setCourses(response.data);
         setCoursesLoading(false);
@@ -233,7 +236,7 @@ export default function App() {
 
   const fetchUserMap = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/users');
+      const response = await axios.get(`${API_URL}/api/users`);
       if (Array.isArray(response.data)) {
         const map = {};
         response.data.forEach(user => {
@@ -251,7 +254,7 @@ export default function App() {
   const fetchUserProfile = async (userId) => {
     try {
       setProfileLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/user_profile/${userId}`);
+      const res = await axios.get(`${API_URL}/api/user_profile/${userId}`);
       if (res.data && res.data.profile) {
         setAcademicDetails({
           twelfthStream: res.data.profile.twelfthStream || "",
@@ -274,7 +277,7 @@ export default function App() {
     const storedUser = localStorage.getItem("user");
     const userId = storedUser ? JSON.parse(storedUser).id : null;
     if (userId) {
-      axios.get(`http://localhost:5000/api/purchased_courses/${userId}`)
+      axios.get(`${API_URL}/api/purchased_courses/${userId}`)
         .then((response) => {
           if (response.data && response.data.courses) {
             setEnrolledCourses(response.data.courses.map(course => ({
@@ -306,7 +309,7 @@ export default function App() {
     setExploreLoading(true);
     setExploreError(null);
     try {
-      let url = `http://localhost:5000/api/coursera/courses?page=1&limit=100`;
+      let url = `${API_URL}/api/coursera/courses?page=1&limit=100`;
       const response = await axios.get(url);
       setCourseraCourses(response.data.courses || []);
     } catch (err) {
@@ -393,7 +396,7 @@ export default function App() {
             ]);
             const userId = storedUser ? JSON.parse(storedUser).id : null;
             if (userId) {
-              await axios.post("http://localhost:5000/api/purchase_course", { userId, courseId: course.id });
+              await axios.post(`${API_URL}/api/purchase_course`, { userId, courseId: course.id });
             }
             showSuccess(`Payment successful! You have purchased: ${course.title}`);
           } catch (error) {
@@ -423,7 +426,7 @@ export default function App() {
       return;
     }
     if (academicDetails.twelfthStream || academicDetails.degree || academicDetails.postGrad || (areasOfInterest && areasOfInterest.length > 0)) {
-      axios.post("http://localhost:5000/api/user_profile/save", {
+      axios.post(`${API_URL}/api/user_profile/save`, {
         userId,
         twelfthStream: academicDetails.twelfthStream,
         degree: academicDetails.degree,
@@ -440,7 +443,7 @@ export default function App() {
     const userId = storedUser ? JSON.parse(storedUser).id : null;
     if (!userId) return;
     try {
-      await axios.post("http://localhost:5000/api/update_course_progress", { userId, courseId, progress: newProgress });
+      await axios.post(`${API_URL}/api/update_course_progress`, { userId, courseId, progress: newProgress });
       // State is now updated optimistically in handleProgressUpdate, 
       // but we can keep this to ensure consistency after the API call succeeds.
       setEnrolledCourses((prev) => prev.map((c) => c.id === courseId ? { ...c, progress: newProgress } : c));
@@ -591,7 +594,7 @@ export default function App() {
     }
     setNotificationsLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/notifications/${userId}`);
+      const res = await axios.get(`${API_URL}/api/notifications/${userId}`);
       setNotifications(res.data.notifications || []);
     } catch (err) {
       setNotifications([]);
@@ -610,7 +613,7 @@ export default function App() {
 
   const markNotificationRead = async (notificationId) => {
     try {
-      await axios.post('http://localhost:5000/api/notifications/mark_read', { notificationId });
+      await axios.post(`${API_URL}/api/notifications/mark_read`, { notificationId });
       setNotifications((prev) => prev.map(n => n._id === notificationId ? { ...n, read: true } : n));
     } catch (err) {}
   };
@@ -1096,7 +1099,7 @@ function CourseRating({ courseId }) {
 
   useEffect(() => {
     if (!courseId || !userId) return;
-    fetch(`http://localhost:5000/api/courses/${courseId}/ratings?userId=${userId}`)
+    fetch(`${API_URL}/api/courses/${courseId}/ratings?userId=${userId}`)
       .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
       .then(r => {
         setAvgRating(r.average || 0);
@@ -1111,7 +1114,7 @@ function CourseRating({ courseId }) {
       alert('You must be logged in to rate.');
       return;
     }
-    fetch(`http://localhost:5000/api/courses/${courseId}/rate`, {
+    fetch(`${API_URL}/api/courses/${courseId}/rate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId, rating: newRating })
@@ -1119,7 +1122,7 @@ function CourseRating({ courseId }) {
       .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
       .then(() => {
         setUserRating(newRating);
-        fetch(`http://localhost:5000/api/courses/${courseId}/ratings?userId=${userId}`)
+        fetch(`${API_URL}/api/courses/${courseId}/ratings?userId=${userId}`)
           .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
           .then(r => {
             setAvgRating(r.average || 0);
