@@ -664,4 +664,4 @@ If you find this project helpful, please give it a star! ⭐
 
 **Made with ❤️ by the Learn Genie Team**
 
-© 2025 Learn Genie. All rights reserved.
+© 2026 Learn Genie. All rights reserved.
